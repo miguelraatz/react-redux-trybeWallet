@@ -10,6 +10,7 @@ const user = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case ADD_LOGIN:
     return {
+      ...state,
       email: action.payload,
     };
   default:
