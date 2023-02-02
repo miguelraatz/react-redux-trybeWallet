@@ -141,7 +141,7 @@ class WalletForm extends Component {
         </label>
 
         <label htmlFor="category-select">
-          Método de pagamento:
+          Tag:
           <select
             className="category-select"
             data-testid="tag-input"
