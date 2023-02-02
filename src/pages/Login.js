@@ -22,11 +22,10 @@ class Login extends React.Component {
     }
   };
 
-  handleChange = async ({ target }) => {
-    await this.setState({
+  handleChange = ({ target }) => {
+    this.setState({
       [target.name]: target.value,
-    });
-    this.validationButton();
+    }, this.validationButton);
   };
 
   handleClick = () => {

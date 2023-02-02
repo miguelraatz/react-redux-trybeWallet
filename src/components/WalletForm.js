@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addExpenses, getCoinApi, sumTotalValue } from '../redux/actions';
+import { addExpenses, getCoinApi } from '../redux/actions';
 import fetchAPI from '../services/fetchAPI';
 
 class WalletForm extends Component {
@@ -44,20 +44,10 @@ class WalletForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     await this.dispatchSubmitToAction();
-    const { expenses } = this.props;
-    await this.calculateTotalValue(expenses);
     this.setState({
       value: '',
       description: '',
     });
-  };
-
-  calculateTotalValue = (expenses) => {
-    const { dispatch } = this.props;
-    dispatch(sumTotalValue(expenses.reduce((sum, { value, currency, exchangeRates }) => {
-      sum += value * exchangeRates[currency].ask;
-      return sum;
-    }, 0)));
   };
 
   render() {
