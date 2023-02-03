@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteExpenses } from '../redux/actions';
+import { deleteExpenses, editExpenses } from '../redux/actions';
 
 class Table extends Component {
   handleDelete = (id) => {
     const { expenses, dispatch } = this.props;
     const newExpenses = expenses.filter((expense) => id !== expense.id);
     dispatch(deleteExpenses(newExpenses));
+  };
+
+  handleEdit = (expense) => {
+    const { dispatch } = this.props;
+    dispatch(editExpenses(expense));
   };
 
   render() {
@@ -28,33 +33,30 @@ class Table extends Component {
           </tr>
         </thead>
 
-        {expenses.map((
-          {
-            description,
-            tag,
-            method,
-            value,
-            exchangeRates,
-            currency,
-            id,
-          },
-        ) => {
-          const valueAsk = exchangeRates[currency].ask;
+        {expenses.map((expense) => {
+          const valueAsk = expense.exchangeRates[expense.currency].ask;
           return (
-            <tbody key={ id }>
+            <tbody key={ expense.id }>
               <tr>
-                <td>{description}</td>
-                <td>{tag}</td>
-                <td>{method}</td>
-                <td>{Number(value).toFixed(2)}</td>
-                <td>{exchangeRates[currency].name}</td>
+                <td>{expense.description}</td>
+                <td>{expense.tag}</td>
+                <td>{expense.method}</td>
+                <td>{Number(expense.value).toFixed(2)}</td>
+                <td>{expense.exchangeRates[expense.currency].name}</td>
                 <td>{Number(valueAsk).toFixed(2)}</td>
-                <td>{(value * valueAsk).toFixed(2)}</td>
+                <td>{(expense.value * valueAsk).toFixed(2)}</td>
                 <td>Real</td>
                 <td>
-                  <button type="button">Editar</button>
                   <button
-                    onClick={ () => this.handleDelete(id) }
+                    type="button"
+                    data-testid="edit-btn"
+                    onClick={ () => this.handleEdit(expense) }
+                  >
+                    Editar
+
+                  </button>
+                  <button
+                    onClick={ () => this.handleDelete(expense.id) }
                     data-testid="delete-btn"
                     type="button"
                   >
