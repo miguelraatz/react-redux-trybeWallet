@@ -19,8 +19,8 @@ describe('Testes componente Login', () => {
     const buttonLogin = screen.getByRole('button', { name: /entrar/i });
     expect(buttonLogin).toBeInTheDocument();
   });
-  test('Verifica se o botão ativa depois de digitar email e password', () => {
-    renderWithRouterAndRedux(<App />);
+  test('Verifica se o botão ativa depois de digitar email e password e também se ao clickar no botão de enviar ele nevega para a rota /carteira', () => {
+    const { history } = renderWithRouterAndRedux(<App />);
     const buttonLogin = screen.getByRole('button', { name: /entrar/i });
     expect(buttonLogin).toBeDisabled();
     const inputEmail = screen.getByTestId('email-input');
@@ -30,5 +30,8 @@ describe('Testes componente Login', () => {
       userEvent.type(inputPassword, '123456');
     });
     expect(buttonLogin).toBeEnabled();
+    userEvent.click(buttonLogin);
+    const { pathname } = history.location;
+    expect(pathname).toBe('/carteira');
   });
 });

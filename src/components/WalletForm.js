@@ -22,7 +22,6 @@ class WalletForm extends Component {
 
   componentDidUpdate() {
     const { editor, expenseToEdit } = this.props;
-    console.log(expenseToEdit);
     const { id } = this.state;
     if (editor && id !== expenseToEdit.id) {
       this.setState({
@@ -197,6 +196,7 @@ class WalletForm extends Component {
         <button
           type="button"
           onClick={ editor ? this.handleEdit : this.handleSubmit }
+          data-testid="edit"
         >
           {editor ? 'Editar despesa' : 'Adicionar despesa'}
         </button>
