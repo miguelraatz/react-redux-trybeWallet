@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteExpenses, editExpenses } from '../redux/actions';
+import '../Table.css';
 
 class Table extends Component {
   handleDelete = (id) => {
@@ -20,7 +21,7 @@ class Table extends Component {
     return (
       <table>
         <thead>
-          <tr>
+          <tr className="t-header">
             <th>Descrição</th>
             <th>Tag</th>
             <th>Método de pagamento</th>
@@ -37,7 +38,7 @@ class Table extends Component {
           const valueAsk = expense.exchangeRates[expense.currency].ask;
           return (
             <tbody key={ expense.id }>
-              <tr>
+              <tr className="t-body">
                 <td>{expense.description}</td>
                 <td>{expense.tag}</td>
                 <td>{expense.method}</td>

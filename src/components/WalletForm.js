@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addExpenses, getCoinApi, addExpenseEdited } from '../redux/actions';
 import fetchAPI from '../services/fetchAPI';
+import '../WalletForm.css';
 
 class WalletForm extends Component {
   state = {

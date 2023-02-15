@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.t-header {
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  height: 40px;
+  justify-content: space-around;
+  width: 1364px;
+}
+
+.t-body {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  font-size: 18px;
+  height: 40px;
+  justify-content: space-around;
+  width: 1364px;
+}

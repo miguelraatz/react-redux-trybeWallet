@@ -1,3 +1,7 @@
+body {
+  background-image: url('./images/imagem_bank.jpg');
+}
+
 .App {
   text-align: center;
 }

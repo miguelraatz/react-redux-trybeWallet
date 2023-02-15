@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { addEmail } from '../redux/actions';
+import '../Login.css';
+import imagem from '../images/wallet.png';
 
 class Login extends React.Component {
   state = {
@@ -38,39 +40,47 @@ class Login extends React.Component {
   render() {
     const { isDisabled, password } = this.state;
     return (
-      <div className="login-container">
-
-        <label htmlFor="email-input">
-          Email:
-          <input
-            type="email"
-            data-testid="email-input"
-            className="email-input"
-            name="email"
-            onChange={ this.handleChange }
-          />
-        </label>
-
-        <label htmlFor="password-input">
-          Password:
-          <input
-            type="password"
-            data-testid="password-input"
-            className="password-input"
-            name="password"
-            onChange={ this.handleChange }
-            value={ password }
-          />
-        </label>
-
-        <button
-          type="button"
-          disabled={ isDisabled }
-          onClick={ this.handleClick }
+      <div className="container">
+        <div
+          className="container-login"
         >
-          Entrar
+          <img src={ imagem } alt="carteira" />
+          <label
+            htmlFor="email-input"
+            className="label-email"
+          >
+            <input
+              type="email"
+              data-testid="email-input"
+              className="input-email"
+              name="email"
+              placeholder="Email"
+              onChange={ this.handleChange }
+            />
+          </label>
 
-        </button>
+          <label htmlFor="password-input" className="label-password">
+            <input
+              placeholder="Password"
+              type="password"
+              data-testid="password-input"
+              className="input-password"
+              name="password"
+              onChange={ this.handleChange }
+              value={ password }
+            />
+          </label>
+
+          <button
+            type="button"
+            className="button-login"
+            disabled={ isDisabled }
+            onClick={ this.handleClick }
+          >
+            Entrar
+
+          </button>
+        </div>
       </div>
     );
   }

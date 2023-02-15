@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container {
+  align-items: center;
+  background-color: rgb(142, 98, 212);
+  color: black;
+  display: flex;
+  height: 70px;
+  justify-content: space-evenly;
+}
+
+.value-input {
+  width: 80px;
+}
+
+input {
+  border-radius: 2px;
+}
+
+button:hover {
+  background-color: rgb(221, 189, 243);
+}

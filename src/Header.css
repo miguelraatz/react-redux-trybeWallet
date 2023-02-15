@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header-container {
+  align-items: center;
+  background-color: rgb(171, 75, 201);
+  color: white;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.total {
+  display: flex;
+  font-size: 24px;
+  font-weight: 700;
+  margin-left: 900px;
+}
+
+.email-header {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.text-brl {
+  font-size: 24px;
+  font-weight: 700;
+}
